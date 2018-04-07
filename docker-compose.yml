@@ -12,22 +12,24 @@ services:
 
   web:
     build: .
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rake db:migrate && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-      - .:/readback
+      - .:/app
     ports:
-      - "3000:3000"
+      - '3000:3000'
     depends_on:
       - db
       - redis
     networks:
       - readback-network
+    environment:
+      - REDIS_URL=redis://redis:6379/0
 
   sidekiq:
     build: .
     command: bundle exec sidekiq
     volumes:
-      - .:/readback
+      - .:/app
     depends_on:
       - db
       - redis
@@ -42,7 +44,7 @@ services:
     ports:
       - '28080:28080'
     volumes:
-      - '.:/readback'
+      - .:/app
     networks:
       - readback-network
 

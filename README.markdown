@@ -74,6 +74,4 @@ a re-run of `docker-compose run web bundle install`
 In another terminal:
 `docker-compose run web rake db:reset`
 
-[If it thinks a server is already running, `rm sudo rm tmp/pids/server.pid` because foreman gets in the way](https://stackoverflow.com/questions/35022428/rails-server-is-still-running-in-a-new-opened-docker-container)
-
 To run anything within the Docker instance, you need to precede it with `docker-compose exec web`
