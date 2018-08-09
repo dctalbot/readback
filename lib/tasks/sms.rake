@@ -9,7 +9,7 @@ namespace :sms do
     episodes = Episode.where beginning: range
     episodes.each do |episode|
       if episode.dj.sms_on
-        SmsRemindersJob.perform_now(episode)
+        SmsRemindersJob.perform_later episode
       end
     end
   end
