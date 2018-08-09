@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_02_26_002001) do
+ActiveRecord::Schema.define(version: 2018_08_09_054250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2018_02_26_002001) do
     t.string "website"
     t.text "about"
     t.text "lists"
+    t.boolean "sms_on"
     t.index ["email"], name: "index_djs_on_email", unique: true
     t.index ["reset_password_token"], name: "index_djs_on_reset_password_token", unique: true
   end
@@ -237,6 +238,11 @@ ActiveRecord::Schema.define(version: 2018_02_26_002001) do
     t.text "website"
     t.index ["dj_id"], name: "index_talk_shows_on_dj_id"
     t.index ["semester_id"], name: "index_talk_shows_on_semester_id"
+  end
+
+  create_table "texts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tips", id: :serial, force: :cascade do |t|

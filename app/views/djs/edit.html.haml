@@ -44,6 +44,9 @@
             = f.label :phone
             = f.phone_field :phone
           %li.linear-field
+            = f.label :sms_on, "Text Reminders"
+            = f.check_box :sms_on
+          %li.linear-field
             = f.label :email
             = f.email_field :email
           %li.linear-field
@@ -82,4 +85,3 @@
             4. Jimi Hendrix at Woodstock
             5. The Beatles’ rooftop concert, 30 January 1969
       = f.text_area :lists, class: "dj-lists-textarea monospace"
-

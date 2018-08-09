@@ -31,6 +31,8 @@ gem 'aws-sdk-s3', require: false
 gem 'mini_magick'
 # SSH
 gem 'net-ssh'
+# SMS
+gem 'twilio-ruby'
 
 ##########
 # Models #
